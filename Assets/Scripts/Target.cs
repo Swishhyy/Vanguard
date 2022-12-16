@@ -1,21 +1,31 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Target : MonoBehaviour
 {
     public float health = 100f;
+    public Text healthText;
 
     public void TakeDamage (float amount)
     {
-        health -= amount;
-        if (health <= 0f)
+        if (gameObject.tag == "Friendly")
         {
-            Die();
+            return;
+        }
+        else
+        {
+            if (gameObject.tag == "Enemy")
+            {
+                health -= amount;
+                if (health <= 0f)
+                {
+                    Destroy(gameObject); 
+                } 
+            }  
+            else
+            {
+                return;
+            }    
         }
     }
-    
-    void Die()
-    {
-        Destroy(gameObject);       
-    }
-
 }
