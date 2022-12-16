@@ -1,1 +1,1 @@
-# Vanguard_
+# Vanguard
